@@ -49,6 +49,10 @@ public class ClienteDAO extends SQLiteOpenHelper{
             cliente.setTelefone(c.getString(c.getColumnIndex("telefone")));
             cliente.setCPF(c.getString(c.getColumnIndex("cpf")));
 
+            Float teste = c.getFloat(c.getColumnIndex("DtNasc"));
+            Double teste2 = c.getDouble(c.getColumnIndex("DtNasc"));
+            Long teste3 = c.getLong(c.getColumnIndex("DtNasc"));
+
             String data = c.getString(c.getColumnIndex("DtNasc"));
             cliente.setDtNasc(retornarDataNasc(data));
 
@@ -60,7 +64,7 @@ public class ClienteDAO extends SQLiteOpenHelper{
         return clientes;
     }
 
-    public Calendar retornarDataNasc(String data){
+    public Date retornarDataNasc(String data){
         if(data == null){
             return null;
         }
@@ -69,12 +73,10 @@ public class ClienteDAO extends SQLiteOpenHelper{
         try {
             dataObj = (Date) formato.parse(data);
         } catch (ParseException e) {
-            e.printStackTrace();
             return null;
         }
-        Calendar dataCal = Calendar.getInstance();
-        dataCal.setTime(dataObj);
-        return dataCal;
+
+        return dataObj;
     }
 
     public void inserir(Cliente cliente){

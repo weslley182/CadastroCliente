@@ -13,7 +13,7 @@ public class Cliente implements Serializable {
     private String nome;
     private String Telefone;
     private String CPF;
-    private Calendar DtNasc;
+    private Date DtNasc;
     private String Genero;
 
     public String getTelefone() {
@@ -32,11 +32,11 @@ public class Cliente implements Serializable {
         this.CPF = CPF;
     }
 
-    public Calendar getDtNasc() {
+    public Date getDtNasc() {
         return DtNasc;
     }
 
-    public void setDtNasc(Calendar dtNasc) {
+    public void setDtNasc(Date dtNasc) {
         DtNasc = dtNasc;
     }
 
@@ -69,7 +69,7 @@ public class Cliente implements Serializable {
         GregorianCalendar hj = new GregorianCalendar();
 
         int anoHj = hj.get(Calendar.YEAR);
-        int anoNascimento = getDtNasc().get(Calendar.YEAR);
+        int anoNascimento = getDtNasc().getYear();
         int idade = new Integer(anoHj - anoNascimento);
         return String.valueOf(idade);
     }

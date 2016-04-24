@@ -4,7 +4,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import Modelo.Cliente;
 import br.com.wesley.cadastroclientes.CadastroActivity;
@@ -40,14 +43,14 @@ public class CadClienteHelper {
         return cliente;
     }
 
-    private Calendar retornarData() {
-        int day = campoDtNasc.getDayOfMonth();
-        int month = campoDtNasc.getMonth();
-        int year =  campoDtNasc.getYear();
+    private Date retornarData() {
+        int dia = campoDtNasc.getDayOfMonth();
+        int ano = campoDtNasc.getYear();
+        int mes = campoDtNasc.getMonth();
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
+        calendar.set(ano, mes, dia);
 
-        return calendar;
+        return calendar.getTime();
     }
 }
