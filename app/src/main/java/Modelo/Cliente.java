@@ -76,6 +76,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return getNome()+" - Idade: "+ getIdade();
+        return getNome();
+        //return getNome()+" - Idade: "+ getIdade();
     }
 }
