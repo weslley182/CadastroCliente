@@ -65,18 +65,35 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    public String getIdade() {
-        GregorianCalendar hj = new GregorianCalendar();
+    public int getIdade() {
+        Calendar dataNascimento = Calendar.getInstance();
+        dataNascimento.setTime(DtNasc);
+        Calendar hoje = Calendar.getInstance();
 
-        int anoHj = hj.get(Calendar.YEAR);
-        int anoNascimento = getDtNasc().getYear();
-        int idade = new Integer(anoHj - anoNascimento);
-        return String.valueOf(idade);
+        int idade = hoje.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR);
+
+        if (hoje.get(Calendar.MONTH) < dataNascimento.get(Calendar.MONTH)) {
+            idade--;
+        }else {
+            if (hoje.get(Calendar.MONTH) == dataNascimento.get(Calendar.MONTH) && hoje.get(Calendar.DAY_OF_MONTH) < dataNascimento.get(Calendar.DAY_OF_MONTH)) {
+                idade--;
+            }
+        }
+
+        return idade;
     }
 
     @Override
     public String toString() {
-        return getNome();
-        //return getNome()+" - Idade: "+ getIdade();
+        //return getNome();
+        return getNome()+" - Idade: "+ getIdade();
+    }
+
+    public boolean camposPreenchidos() {
+        if(getNome().isEmpty() || getTelefone().isEmpty() || getCPF().isEmpty()) {
+            return false;
+        }else{
+            return true;
+        }
     }
 }

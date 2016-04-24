@@ -12,14 +12,4 @@
     android:orientation="vertical"
     tools:context="br.com.wesley.cadastroclientes.MainActivity">
 
-    <Button
-        android:id="@+id/main_cadastrar"
-        android:text="Clientes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/main_sair"
-        android:text="Sair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </LinearLayout>

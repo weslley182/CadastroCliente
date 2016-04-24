@@ -6,11 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,7 +51,7 @@ public class ClienteDAO extends SQLiteOpenHelper{
             cliente.setCPF(c.getString(c.getColumnIndex("cpf")));
 
             String data = c.getString(c.getColumnIndex("DtNasc"));
-            //cliente.setDtNasc(retornarDataNasc(data));
+            cliente.setDtNasc(retornarDataNasc(data));
 
             cliente.setGenero(c.getString(c.getColumnIndex("genero")));
 
@@ -66,19 +66,21 @@ public class ClienteDAO extends SQLiteOpenHelper{
             return null;
         }
 
-        SimpleDateFormat formato =  new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        SimpleDateFormat formato =  new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy", Locale.ENGLISH);
+        //SimpleDateFormat formato =  new SimpleDateFormat("yyyy-mm-dd");
+
         Calendar cal  = Calendar.getInstance();
         Date dataFormatada = null;
 
         try {
-            dataFormatada = (Date) formato.parse(data);
+            dataFormatada = formato.parse(data);
 
         } catch (ParseException e) {
             return null;
         }
         cal.setTime(dataFormatada);
 
-        return (Date) cal.getTime();
+        return cal.getTime();
     }
 
     public void inserir(Cliente cliente){

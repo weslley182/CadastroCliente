@@ -4,8 +4,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import Modelo.Cliente;
 import br.com.wesley.cadastroclientes.CadastroActivity;
@@ -42,11 +44,15 @@ public class CadClienteHelper {
     }
 
     private Date retornarData() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
         int dia = campoDtNasc.getDayOfMonth();
         int ano = campoDtNasc.getYear();
-        int mes = campoDtNasc.getMonth();
+        int mes = campoDtNasc.getMonth() + 1;
 
         Calendar calendar = Calendar.getInstance();
+
+        TimeZone teste = calendar.getTimeZone();
+
         calendar.set(ano, mes, dia);
 
         return calendar.getTime();

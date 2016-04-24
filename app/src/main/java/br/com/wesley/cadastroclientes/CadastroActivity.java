@@ -39,6 +39,11 @@ public class CadastroActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.cadastro_ok:
                 Cliente cliente = helper.pegarCliente();
+                if (!cliente.camposPreenchidos()){
+                    Toast.makeText(CadastroActivity.this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                    //finish();
+                    return super.onOptionsItemSelected(item);
+                }
                 ClienteDAO dao = new ClienteDAO(this);
 
                 dao.inserir(cliente);
