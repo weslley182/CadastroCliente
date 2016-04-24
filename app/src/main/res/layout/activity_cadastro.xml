@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.wesley.cadastroclientes.CadastroActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/cadastro_nome"
+            android:hint="Nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/cadastro_telefone"
+            android:hint="Telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/cadastro_cpf"
+            android:hint="CPF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Data Nascimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <DatePicker
+            android:spinnersShown="false"
+            android:calendarViewShown="true"
+            android:id="@+id/cadastro_DtNasc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </DatePicker>
+
+        <TextView
+            android:text="Gênero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/cadastro_genero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+    </LinearLayout>
+
+</ScrollView>
