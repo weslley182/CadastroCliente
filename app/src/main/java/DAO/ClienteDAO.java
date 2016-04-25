@@ -28,7 +28,7 @@ public class ClienteDAO extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sSql = "CREATE TABLE Clientes(id INTEGER PRIMARY KEY, "+
-                "nome TEXT NOT NULL, telefone TEXT, cpf TEXT, DtNasc TEXT, genero TEXT);";
+                "nome TEXT NOT NULL, telefone TEXT, cpf TEXT, DtNasc DATETIME, genero TEXT);";
         db.execSQL(sSql);
     }
 
